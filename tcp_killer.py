@@ -88,10 +88,7 @@ _FRIDA_SCRIPT = """
 
 
 def canonicalize_ip_address(address):
-  if ":" in address:
-    family = socket.AF_INET6
-  else:
-    family = socket.AF_INET
+  family = socket.AF_INET6 if ":" in address else socket.AF_INET
   return socket.inet_ntop(family, socket.inet_pton(family, address))
 
 
